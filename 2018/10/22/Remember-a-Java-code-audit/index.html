@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar/avatar.jpg">
+  <link rel="icon" href="/img/avatar/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="剑阁峥嵘而崔嵬 一夫当关 万夫莫开">
+  <meta name="author" content="幻月singll">
+  <meta name="keywords" content="幻月,singll">
+  
+  <title>Remember a Java code audit - 剑阁</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.singll.cc","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>剑阁</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Remember a Java code audit">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-10-22 22:03" pubdate>
+        2018年10月22日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Remember a Java code audit</h1>
+            
+            <div class="markdown-body">
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>大家好，我是一只安全小菜鸡。老大扔给我一个项目，某项目的java审计。于是我就去进行我“第一次”审计。</p>
+<h1 id="第一回合"><a href="#第一回合" class="headerlink" title="第一回合"></a>第一回合</h1><p><del>拿到代码的我一脸懵逼</del><br>OK，这是个Java项目，拿到代码之后，我们首先….看结构。<br>什么？难道拿到代码不是先上扫描器么？<br>嗯…这么想也没错，我对代码审计的扫描工具有个看法。<br>在我想象的代码审计境界，对于工具是这样的：<br>第一个境界：依赖扫描工具。这个阶段扫描工具是救命的，报告全靠扫描工具来出。<br>第二个境界：脱离扫描工具。一个优秀的代码审计工程师，是一定要会看得懂代码的，扫描工具是提升技术的拦路虎。<br>第三个境界：使用扫描工具。在高手的手里，工具是提升生产力的，因为高手知道扫描工具的误报，漏报，可以使用工具解决重复的工作，也可以对工具进行改进。<br>这里不用说了，我就是第一个境界中的。于是我用的是扫描工具+人工审计的方式。PS：扫描工具是使用的fortify，谁用谁知道。大家可以在网上自己寻找，这里不详说了。<br>这里补充一下，出去给人做代码审计呢，一般可以配一个开发来帮忙导游，哦不对，是讲解。<br>有什么不懂不会的都可以问，只要不是low爆的问题开发小哥都会耐心讲解。还有就是可以问一下有没有设计文档，可不可以拿出来看看。<br>回到正题，首先呢，看结构：<br>既然java代码，那么是用什么框架开发的，用了什么第三方插件，等等。<br>我看到这个项目，用了spring框架，然后orm用的是mybatis。<br>至于怎么看，如果项目里有pom.xml，那么就点开他就行，没有的话就要根据各个框架的特点来找对应文件和代码结构了。<br><img src="https://i.loli.net/2018/10/22/5bcddfbc33e22.png" srcset="/img/loading.gif" lazyload><br>就是上图这货。<br><img src="https://i.loli.net/2018/10/22/5bcddfbc846c8.png" srcset="/img/loading.gif" lazyload><br>既然是java项目，那么一个显而易见的事实就是，java代码都在.java文件里。一般来说，都在src/main/java 这个文件夹下。<br>最近看java，发现一个很好玩的东西，就是一个号称是安全框架的东西–shiro，apache出品，必属精品。咳咳。<br>其实是一个权限管理框架（总结的可能很简单，不过框架主要做的就是这方面事情），有兴趣可以自行看看<a target="_blank" rel="noopener" href="https://www.sojson.com/tag_shiro.html">shiro</a>，我在这个项目里就有发现有用到。<br>以及一定要看的是web.xml，这在java web项目中属于核心文件，只要能找到就必看（没错，这个文件虽然重要但是不是必须的）。<br>web.xml位于WEB-INF目录下，而WEB-INF可能会位于webapp中，貌似也会在其他位置，这个大家稍微找一下就好了。（如图）<br><img src="https://i.loli.net/2018/10/22/5bcddfbc999f7.png" srcset="/img/loading.gif" lazyload><br>从web.xml里面可以看到什么呢？<br><img src="https://i.loli.net/2018/10/22/5bcddfbc77df2.png" srcset="/img/loading.gif" lazyload><br>filter，这就是大名鼎鼎的过滤器，是否有全局过滤看这里准没错。<br><img src="https://i.loli.net/2018/10/22/5bcddfbc77df2.png" srcset="/img/loading.gif" lazyload><br>session，过期时间等。<br>这里有篇秘籍，大家可以自行观看<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/35c414c06cd9">web.xml详解</a><br>本项目是没有设置全局过滤的，所以，你懂得。<br>由于本项目使用的是mybatis，那么我们去看mybatis文件就好了，很简单，mybatis使用的是xml文件，会SQL的一看就能看懂，关键的就是${} 与#{}。<br><img src="https://i.loli.net/2018/10/22/5bcddfbd168da.png" srcset="/img/loading.gif" lazyload><br>就是这种文件。原则就是，看到#{}就可以放心了，不存在注入的，看到${}的进去跟踪下，如果是从前端传过来的，那么恭喜你，发现SQL注入~<br>此项目不存在sql注入。</p>
+<h1 id="第二回合"><a href="#第二回合" class="headerlink" title="第二回合"></a>第二回合</h1><p>好，我们继续往下进行。让我们有请我们的好朋友，XSS同学。<br>这里说一下人工查XSS思路，我们回顾一下XSS特点，要有输入，要有输出（反射型）。于是我们就去找，输入，一般的语句是这样的：request.getParameter()。<br>然后我们在这下面找到，会不会返回到前端，以及会不会过滤。前端呢，如果有jsp，去对应jsp里面找有没有${XXX}<br> 这个就是用来输出从java里面传过来的变量的。<br>由于此项目不存在过滤，所以存在一些XSS。<br>至于储存型XSS呢，就只要看是否有调用sql语句存储到数据库，以及是否将内容输出到前端，满足这两点才会存在（当然要没有过滤才可以）。<br>余下的漏洞稍稍提一嘴，比如任意文件查看删除，可以根据path 变量来查（当然这属于取巧，很大可能会漏掉），<br>至于命令执行，可以查找相关危险函数。以及文件上传的危险函数，这里不做总结了，因为我也没找到[摊手]。</p>
+<h1 id="最终回合"><a href="#最终回合" class="headerlink" title="最终回合"></a>最终回合</h1><p>emmm，最后我从自己审出来的+fortify的扫描报告中的一些漏洞（验证过的）拿出来写了报告。<br>说说我自己的理解：想要完成代码审计的工作，是要会开发的，起码要对代码有感觉，然后常见漏洞原理要掌握。<br>至于代码审计的进阶，那么就需要深入研究。<br>忘记从哪里看到的一句话：想要审别人的代码，你就要比写这个代码的人技术更好。<br>与君共勉。</p>
+<h1 id="书籍推荐"><a href="#书籍推荐" class="headerlink" title="书籍推荐"></a>书籍推荐</h1><p>既然是Java相关，那么一定要推荐一本Java书<br><a target="_blank" rel="noopener" href="http://product.dangdang.com/24035306.html">《Java核心技术 卷一：基础知识》</a><br>如果经济能力足够，推荐大家买正版书。<br><a href="%E9%93%BE%E6%8E%A5%EF%BC%9Ahttps://pan.baidu.com/s/1tgUG77SSqghmJ4MKoxZnvA">百度云</a>(801n)</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Audit/">Audit</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/07/07/Java-Training-Week-1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">[Java Training]Week 1</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/10/17/Self-review/">
+                        <span class="hidden-mobile">Self review</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

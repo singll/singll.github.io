@@ -1,0 +1,823 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar/avatar.jpg">
+  <link rel="icon" href="/img/avatar/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="剑阁峥嵘而崔嵬 一夫当关 万夫莫开">
+  <meta name="author" content="幻月singll">
+  <meta name="keywords" content="幻月,singll">
+  
+  <title>[Java Training]Week 5 - 剑阁</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.singll.cc","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>剑阁</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="[Java Training]Week 5">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-12-15 20:32" pubdate>
+        2019年12月15日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      64
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">[Java Training]Week 5</h1>
+            
+            <div class="markdown-body">
+              <h1 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h1><p>​    本系列-Java集训系列</p>
+<p>​    记录我带领小组进行Java学习，按照《Java核心技术》第十版进行学习</p>
+<h1 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h1><p>​    接口、lambda、内部类</p>
+<h1 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h1><ol>
+<li><p>接口(Interface)是对类的一组需求描述,这些类要遵从接口描述的统一格式进行定义</p>
+</li>
+<li><p>可以将接口看成没有属性的抽象类（看成的意思就是两者有一些区别，但是大体上是差不多的）</p>
+</li>
+<li><p>定义接口：<em><strong>public interface interfacename{}</strong></em> </p>
+</li>
+<li><p>实现接口：<em><strong>public class classname implements interfacename1,interfacename2{}</strong></em></p>
+</li>
+<li><p>可以看到接口与抽象类很像，不过有个最大的不同就是一个类可以实现任意个接口，而一个类只能继承一个抽象类，这样就导致了使用方法上有很大不同</p>
+</li>
+<li><p>在接口中定义的方法，实现接口的类必须实现，除非加<strong>default</strong>描述符，在定义方法的时候将此关键字加到前面，并且在接口中实现一个默认方法，就可以在实现接口的类中不实现此方法，使用默认的方法（有点绕，看代码）</p>
+</li>
+<li><p>如果先在一个接口中将一个方法定义为默认方法，然后又在超类或另一个接口中定义了同样的方法，就会产生冲突，以下是Java在解决冲突方面的规则</p>
+<p>1）超类优先。如果超类提供了一个具体方法，同名而且具有相同参数类型的默认方法会被忽略。</p>
+<p>2）接口冲突。如果一个超接口提供了一个默认方法，另一个接口提供了一个同名而且参数类型相同的方法，必须覆盖这个方法来解决冲突</p>
+</li>
+<li><p>如果一个类实现的两个接口中定义了同样的方法，并且至少其中一个是**默认(default)**方法，则实现类必须要覆盖方法，选择手动选择其中一个来调用</p>
+</li>
+</ol>
+<blockquote>
+<p>接口的定义和实现</p>
+</blockquote>
+<blockquote>
+<p>InterfaceTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.interfaces;<br><br><span class="hljs-comment">// 这里是对接口进行测试的主类</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InterfaceTest</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// 使用的时候可以用接口的类型来定义变量，但是实例化的是实现接口的类，而不能实例化接口，并且这里不可以用 C_INT</span><br>        Customizee&lt;Person&gt; persona = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&quot;Tony&quot;</span>, <span class="hljs-number">22</span>, <span class="hljs-number">1</span>);<br>        <br>        <span class="hljs-comment">// 当然也可以用Person来定义变量</span><br>        Person personb = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&quot;Tom&quot;</span>, <span class="hljs-number">25</span>, <span class="hljs-number">0</span>);<br>        <br>        <span class="hljs-comment">// 就可以在这里调用实现的接口了</span><br>        <span class="hljs-keyword">boolean</span> agtb = persona.greaterThan(personb);<br><br>        System.out.println(<span class="hljs-string">&quot;a gt b ?&quot;</span> + agtb);<br><br>        <span class="hljs-keyword">int</span> reta = persona.ret();<br>        <span class="hljs-keyword">int</span> retb = personb.ret();<br><br>        System.out.println(<span class="hljs-string">&quot;reta = &quot;</span> + reta + <span class="hljs-string">&quot;, retb = &quot;</span> + retb);<br><br><br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Person.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.interfaces;<br><br><span class="hljs-comment">// 实现了自定义接口的类，关键字 implements interfacename 代表实现接口</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Customizee</span>&lt;<span class="hljs-title">Person</span>&gt; </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> age;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> sex;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span><span class="hljs-params">(String name, <span class="hljs-keyword">int</span> age, <span class="hljs-keyword">int</span> sex)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.age = age &gt; <span class="hljs-number">0</span> ? age:<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">this</span>.sex = sex == <span class="hljs-number">0</span> ? <span class="hljs-number">0</span>:<span class="hljs-number">1</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getAge</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> age;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getSex</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> age==<span class="hljs-number">0</span>?<span class="hljs-string">&quot;男&quot;</span>:<span class="hljs-string">&quot;女&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 这是接口 Customize 的方法，由于没有使用default，所以必须实现（由于继承）</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">greaterThan</span><span class="hljs-params">(Person a)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// 这里可以使用静态属性，不过不是很建议使用，知道可以这么用就好了</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.age+C_INT&gt;a.age+C_INT?<span class="hljs-keyword">true</span>:<span class="hljs-keyword">false</span>;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Customizee.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.interfaces;<br><br><span class="hljs-comment">// 可以用 extends 扩展接口，就像继承一样（这里是使用继承来扩展接口，本身也是个接口。）</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Customizee</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">Customize</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;<br><br>    <span class="hljs-comment">// 默认方法，实现接口的类可以选择覆盖或者不覆盖，不覆盖就是用的接口里的实现方式，比如这里就是返回0</span><br>    <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">int</span> <span class="hljs-title">ret</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Customize.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.interfaces;<br><br><span class="hljs-comment">// 接口定义用关键词 interface 代替 class</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Customize</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;<br><br>    <span class="hljs-comment">// 虽然接口不能包含属性，但是可以包含常量</span><br>    <span class="hljs-comment">// 这里其实是 public static final double C_INT = 20</span><br>    <span class="hljs-keyword">double</span> C_INT = <span class="hljs-number">20</span>;<br><br><br>    <span class="hljs-comment">// 接口定义的方法，必须实现的</span><br>    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">greaterThan</span><span class="hljs-params">(T a)</span></span>;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">    // 这个方法会报错，不可以更改final值</span><br><span class="hljs-comment">    default double setC_INT(int a)</span><br><span class="hljs-comment">    &#123;</span><br><span class="hljs-comment">      this.C_INT = a;</span><br><span class="hljs-comment">    &#125;;</span><br><span class="hljs-comment">     */</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>书中实现基础接口和调用的示例（就不细标示出了）</p>
+</blockquote>
+<blockquote>
+<p>EmployeeSortTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.interfaces;<br><br><span class="hljs-keyword">import</span> java.util.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EmployeeSortTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        Employee[] staff = <span class="hljs-keyword">new</span> Employee[<span class="hljs-number">3</span>];<br><br>        staff[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Harry Hacker&quot;</span>, <span class="hljs-number">35000</span>);<br>        staff[<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Carl Cracker&quot;</span>, <span class="hljs-number">75000</span>);<br>        staff[<span class="hljs-number">2</span>] = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Tony Tester&quot;</span>, <span class="hljs-number">38000</span>);<br><br>        Arrays.sort(staff);<br><br>        <span class="hljs-comment">// print out information about all Employee objects</span><br>        <span class="hljs-keyword">for</span> (Employee e : staff)<br>            System.out.println(<span class="hljs-string">&quot;name=&quot;</span> + e.getName() + <span class="hljs-string">&quot;,salary=&quot;</span> + e.getSalary());<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Employee.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.interfaces;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Comparable</span>&lt;<span class="hljs-title">Employee</span>&gt; </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String name, <span class="hljs-keyword">double</span> salary)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.salary = salary;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> salary;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">raiseSalary</span><span class="hljs-params">(<span class="hljs-keyword">double</span> byPercent)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">double</span> raise = salary * byPercent / <span class="hljs-number">100</span>;<br>        salary += raise;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * Compares employees by salary</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> other another Employee object</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> a negative value if this employee has a lower salary than</span><br><span class="hljs-comment">     * otherObject, 0 if the salaries are the same, a positive value otherwise</span><br><span class="hljs-comment">     */</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compareTo</span><span class="hljs-params">(Employee other)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> Double.compare(salary, other.salary);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<p>回调是一种常见的程序设计模式，指出某个特定事件发生时应该采用的动作。</p>
+<p>简单理解就是延迟调用，普通的代码都是顺序的，执行到就执行了，回调就是先将定义好的代码放到某个位置，然后等到满足条件的时候就调用那部分代码。</p>
+<blockquote>
+<p>TimerTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.timer;<br><br><span class="hljs-keyword">import</span> java.awt.*;<br><span class="hljs-keyword">import</span> java.awt.event.*;<br><span class="hljs-keyword">import</span> java.util.*;<br><span class="hljs-keyword">import</span> javax.swing.*;<br><span class="hljs-keyword">import</span> javax.swing.Timer;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TimerTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        ActionListener listener = <span class="hljs-keyword">new</span> TimePrinter();<br><br>        <span class="hljs-comment">// construct a timer that calls the listener</span><br>        <span class="hljs-comment">// once every 10 seconds</span><br>        <span class="hljs-comment">// 每十秒调用一次 listener.actionPerformed，传进去的是一个对象</span><br>        Timer t = <span class="hljs-keyword">new</span> Timer(<span class="hljs-number">10000</span>, listener);<br>        <span class="hljs-comment">// 调用start()才是正式开始运行</span><br>        t.start();<br>        <span class="hljs-comment">// 显示一个对话框，这里主要是为了阻塞进程和方便推出，阻塞进程的意思是由这句占用主进程，打印日期和响声的代码并不是这里调用，而是回调调用的</span><br>        JOptionPane.showMessageDialog(<span class="hljs-keyword">null</span>, <span class="hljs-string">&quot;Quit program?&quot;</span>);<br>        System.exit(<span class="hljs-number">0</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TimePrinter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ActionListener</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-comment">// 实现接口，接口 ActionListener 只有这一个方法</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">actionPerformed</span><span class="hljs-params">(ActionEvent event)</span></span><br><span class="hljs-function">    </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;At the tone, the time is &quot;</span> + <span class="hljs-keyword">new</span> Date());<br>        <span class="hljs-comment">// 这句代码是响一声</span><br>        Toolkit.getDefaultToolkit().beep();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>克隆，clone是Object的一个protected方法，所以自定义的类想要克隆就要覆盖clone方法并将修饰符变成public</p>
+<p>Object的clone方法默认是”浅拷贝”，即如果属性是可变的（比如各种对象类型），则只拷贝引用，不拷贝一份完整的对象</p>
+<p>想要进行”深拷贝”就要自己实现</p>
+<blockquote>
+<p>CloneTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.clone;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CloneTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">try</span><br>        &#123;<br>            <span class="hljs-comment">// 先定义一个original</span><br>            Employee original = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;John Q. Public&quot;</span>, <span class="hljs-number">50000</span>);<br>            original.setHireDay(<span class="hljs-number">2000</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);<br>            <span class="hljs-comment">// 调用clone()方法，克隆一份</span><br>            Employee copy = original.clone();<br>            <br>            <span class="hljs-comment">// 调用方法更改属性</span><br>            copy.raiseSalary(<span class="hljs-number">10</span>);<br>            copy.setHireDay(<span class="hljs-number">2002</span>, <span class="hljs-number">12</span>, <span class="hljs-number">31</span>);<br>            <br>            <span class="hljs-comment">// 输出两个对象，发现内容不同</span><br>            System.out.println(<span class="hljs-string">&quot;original=&quot;</span> + original);<br>            System.out.println(<span class="hljs-string">&quot;copy=&quot;</span> + copy);<br>        &#125;<br>        <span class="hljs-keyword">catch</span> (CloneNotSupportedException e)<br>        &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Employee.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.clone;<br><br><span class="hljs-keyword">import</span> java.util.Date;<br><span class="hljs-keyword">import</span> java.util.GregorianCalendar;<br><br><span class="hljs-comment">// 实现Cloneable方法，这个方法不是必须的，只是约定实现此接口的类肯定可以Clone</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Cloneable</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary;<br>    <span class="hljs-keyword">private</span> Date hireDay;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String name, <span class="hljs-keyword">double</span> salary)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.salary = salary;<br>        hireDay = <span class="hljs-keyword">new</span> Date();<br>    &#125;<br><br>    <span class="hljs-comment">// 克隆方法，首先调用Object的clone方法，然后将可变的对象（Date）clone一下</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Employee <span class="hljs-title">clone</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> CloneNotSupportedException</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// call Object.clone()</span><br>        Employee cloned = (Employee) <span class="hljs-keyword">super</span>.clone();<br><br>        <span class="hljs-comment">// clone mutable fields</span><br>        cloned.hireDay = (Date) hireDay.clone();<br><br>        <span class="hljs-keyword">return</span> cloned;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * Set the hire day to a given date.</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> year the year of the hire day</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> month the month of the hire day</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> day the day of the hire day</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setHireDay</span><span class="hljs-params">(<span class="hljs-keyword">int</span> year, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> day)</span></span><br><span class="hljs-function">    </span>&#123;<br>        Date newHireDay = <span class="hljs-keyword">new</span> GregorianCalendar(year, month - <span class="hljs-number">1</span>, day).getTime();<br>        <span class="hljs-comment">// Example of instance field mutation</span><br>        hireDay.setTime(newHireDay.getTime());<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">raiseSalary</span><span class="hljs-params">(<span class="hljs-keyword">double</span> byPercent)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">double</span> raise = salary * byPercent / <span class="hljs-number">100</span>;<br>        salary += raise;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Employee[name=&quot;</span> + name + <span class="hljs-string">&quot;,salary=&quot;</span> + salary + <span class="hljs-string">&quot;,hireDay=&quot;</span> + hireDay + <span class="hljs-string">&quot;]&quot;</span>;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>lambda表达式是一个可传递的代码块。</p>
+<p>首先是什么地方需要使用lambda表达式，在需要回调的地方，并且回调需要的代码只执行一两次，就可以用lambda，而不是用上例那样再定义一个类，很繁琐。</p>
+<p>然后，lambda表达式语法：</p>
+<ol>
+<li>完整形式：(type name1,type name2)-&gt;{ xxxxx;return xx;}</li>
+<li>首先是一个括号，括号里是标准的参数类型+参数名称，然后一个-&gt;，最后一个代码块，代码块里要有返回值</li>
+<li>省略形式：(name1,name2)-&gt;{xxxx;return xx;}//如果参数类型可以推导出来，那么就可以省略</li>
+<li>省略形式：()-&gt;{xxx;return xx;}//如果没有参数就空的括号</li>
+<li>省略形式：name-&gt;{xxx;return xx;}//如果只有一个参数，可以省略括号和类型</li>
+<li>省略形式：()-&gt;xxx; //如果代码只有一行，并且是返回值，可以不用return，代码执行结果就当作返回值</li>
+<li>如果代码块里由分支，那么其中一个有返回值，另一个必须有返回值</li>
+</ol>
+<blockquote>
+<p>LambdaTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.lambda;<br><br><span class="hljs-keyword">import</span> java.util.*;<br><span class="hljs-keyword">import</span> javax.swing.*;<br><span class="hljs-keyword">import</span> javax.swing.Timer;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LambdaTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        String[] planets = <span class="hljs-keyword">new</span> String[] &#123;<span class="hljs-string">&quot;Mercury&quot;</span>, <span class="hljs-string">&quot;Venus&quot;</span>, <span class="hljs-string">&quot;Earth&quot;</span>, <span class="hljs-string">&quot;Mars&quot;</span>, <span class="hljs-string">&quot;Jupiter&quot;</span>, <span class="hljs-string">&quot;Saturn&quot;</span>, <span class="hljs-string">&quot;Uranus&quot;</span>, <span class="hljs-string">&quot;Neptune&quot;</span>&#125;;<br>        System.out.println(Arrays.toString(planets));<br>        System.out.println(<span class="hljs-string">&quot;Sorted in dictionary order:&quot;</span>);<br>        Arrays.sort(planets);<br>        System.out.println(Arrays.toString(planets));<br>        System.out.println(<span class="hljs-string">&quot;Sorted by length:&quot;</span>);<br>        <span class="hljs-comment">// 省略了参数类型和return的lambda表达式</span><br>        Arrays.sort(planets, (first, second)-&gt;first.length()-second.length());<br>        System.out.println(Arrays.toString(planets));<br><br>        <span class="hljs-comment">// 省略了类型和括号，还省略了return的lambda表达式</span><br>        Timer t = <span class="hljs-keyword">new</span> Timer(<span class="hljs-number">1000</span>, event-&gt;System.out.println(<span class="hljs-string">&quot;The time is &quot;</span> + <span class="hljs-keyword">new</span> Date()));<br>        t.start();<br><br>        <span class="hljs-comment">// keep program running until user selects &quot;OK&quot;</span><br>        JOptionPane.showMessageDialog(<span class="hljs-keyword">null</span>, <span class="hljs-string">&quot;Quitprogram?&quot;</span>);<br>        System.exit(<span class="hljs-number">0</span>);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>方法引用是一个语法糖，即编译器进行优化的语法。</p>
+<p>方法引用等价于lambda表达式，比如System.out::println 等价于 x-&gt;System.out.println(x)</p>
+<p>方法引用有如下三种形式</p>
+<ol>
+<li><em>object</em>::<em>instanceMethod</em></li>
+<li><em>Class</em>::<em>staticMethod</em></li>
+<li><em>Class</em>::<em>instanceMethod</em></li>
+</ol>
+<p>前两种情况，方法引用等价于提供方法参数的lambda表达式。</p>
+<p>第一种：System.out.println 等价于 x-&gt;System.out.println(x)</p>
+<p>第二种：Math::pow 等价于 （x,y）-&gt;Math.pow(x,y)</p>
+<p>第三种：String::compareToIgnoreCase 等价于 (x,y)-&gt;x.compareToIgnoreCase(y)</p>
+<p>this::equals 等价于 x-&gt;this.equals(x)</p>
+<p><em>super</em>::<em>instanceMethod</em> 也一样</p>
+<p>构造器引用：<em>Class</em>::<em>new</em></p>
+<p>关于变量作用域，看书就好了，多看看才能理解</p>
+<p>主要问题在于，如果引用外部变量，是有一定规则的。</p>
+<p>lambda表达式使用，lambda表达式的特点是延迟执行，而不是立刻运行，因为一般的代码都是立刻运行的，也不需要用lambda，那么用lambda表的是的需求原因典型有如下：</p>
+<ol>
+<li>在一个单独的线程中运行代码；</li>
+<li>多次运行代码；</li>
+<li>在算法的适当位置运行代码（例如，排序中的比较操作）；</li>
+<li>发生某种情况时执行代码（如，点击了一个按钮，数据到达，等等）；</li>
+<li>只有在必要时才运行的代码。</li>
+</ol>
+<p>可能会有疑问为什么延迟执行就要用lambda，而不是写个类来调用？</p>
+<p>答案是lambda想执行的代码是临时定义的，或者说是多样的、动态的，与直接定义在类里的有本质区别</p>
+<p>比如以下一个场景，重复执行一个片段代码N次：</p>
+<blockquote>
+<p>repeat(10, () -&gt; System.out.println(“Hello, World!”));</p>
+</blockquote>
+<p>可以在调用这个方法的时候，传进去任意代码片段的lambda表达式，这样可以很方便的达到目的，也很灵活</p>
+<p>上面的repeat定义如下，并不是随便可以接收lambda参数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">repeat</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, Runnable action)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) action.run();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>常用函数式接口</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>函数式接口</th>
+<th>参数类型</th>
+<th>返回类型</th>
+<th>抽象方法名</th>
+<th>描述</th>
+<th>其他方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Runnable</td>
+<td>无</td>
+<td>void</td>
+<td>run</td>
+<td>作为无参数或返回值的动作执行</td>
+<td></td>
+</tr>
+<tr>
+<td>Supplier<T></td>
+<td>无</td>
+<td>T</td>
+<td>get</td>
+<td>提供一个T类型的值</td>
+<td></td>
+</tr>
+<tr>
+<td>Consumer<T></td>
+<td>T</td>
+<td>void</td>
+<td>accept</td>
+<td>处理一个T类型的值</td>
+<td>addThen</td>
+</tr>
+<tr>
+<td>BiConsumer&lt;T,U&gt;</td>
+<td>T,U</td>
+<td>void</td>
+<td>accept</td>
+<td>处理T和U类型的值</td>
+<td>addThen</td>
+</tr>
+<tr>
+<td>Function&lt;T,R&gt;</td>
+<td>T</td>
+<td>R</td>
+<td>apply</td>
+<td>有一个T类型参数的函数</td>
+<td>compose,andThen,identity</td>
+</tr>
+<tr>
+<td>BiFunction&lt;T,U,R&gt;</td>
+<td>T,U</td>
+<td>R</td>
+<td>apply</td>
+<td>有T和U类型参数的函数</td>
+<td>addThen</td>
+</tr>
+<tr>
+<td>UnaryOperator<T></td>
+<td>T</td>
+<td>T</td>
+<td>apply</td>
+<td>类型T上的一元操作符</td>
+<td>compose,andThen,identity</td>
+</tr>
+<tr>
+<td>BinaryOperator<T></td>
+<td>T,T</td>
+<td>T</td>
+<td>apply</td>
+<td>类型T上的二元操作符</td>
+<td>addThen,maxBy,minBy</td>
+</tr>
+<tr>
+<td>Predicate<T></td>
+<td>T</td>
+<td>boolean</td>
+<td>test</td>
+<td>布尔值函数</td>
+<td>and,or,negate,isEqual</td>
+</tr>
+<tr>
+<td>BiPredicate&lt;T,U&gt;</td>
+<td>T,U</td>
+<td>boolean</td>
+<td>test</td>
+<td>有两个参数的布尔值函数</td>
+<td>and,or,negate</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>基本类型的函数式接口</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>函数式接口</th>
+<th>参数类型</th>
+<th>返回类型</th>
+<th>抽象方法名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BooleanSupplier</td>
+<td>none</td>
+<td>boolean</td>
+<td>getAsBoolean</td>
+</tr>
+<tr>
+<td>PSupplier</td>
+<td>none</td>
+<td>p</td>
+<td>getAsP</td>
+</tr>
+<tr>
+<td>PConsumer</td>
+<td>p</td>
+<td>void</td>
+<td>accept</td>
+</tr>
+<tr>
+<td>ObjPConsumer<T></td>
+<td>T,p</td>
+<td>void</td>
+<td>accept</td>
+</tr>
+<tr>
+<td>PFunction<T></td>
+<td>p</td>
+<td>T</td>
+<td>apply</td>
+</tr>
+<tr>
+<td>PToQFunction</td>
+<td>p</td>
+<td>q</td>
+<td>applyAsQ</td>
+</tr>
+<tr>
+<td>ToPFunction<T></td>
+<td>T</td>
+<td>p</td>
+<td>applyAsP</td>
+</tr>
+<tr>
+<td>ToPBiFunction&lt;T,U&gt;</td>
+<td>T,U</td>
+<td>p</td>
+<td>applyAsP</td>
+</tr>
+<tr>
+<td>PUnaryOperator</td>
+<td>p</td>
+<td>p</td>
+<td>applyAsP</td>
+</tr>
+<tr>
+<td>PBinaryOperator</td>
+<td>p,p</td>
+<td>p</td>
+<td>applyAsP</td>
+</tr>
+<tr>
+<td>PPredicate</td>
+<td>p</td>
+<td>boolean</td>
+<td>test</td>
+</tr>
+</tbody></table>
+<p>也可以自定义接口，不过推荐使用内置的</p>
+<p>内部类基本等同于类，只不过是在类的内部，特点是可以使用所在的类的属性，语法很简单易懂，仔细理解还是比较麻烦的，可以多看看这一章关于内部类的解释</p>
+<blockquote>
+<p>InnerClassTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.innerClass;<br><br><span class="hljs-keyword">import</span> java.awt.*;<br><span class="hljs-keyword">import</span> java.awt.event.*;<br><span class="hljs-keyword">import</span> java.util.*;<br><span class="hljs-keyword">import</span> javax.swing.*;<br><span class="hljs-keyword">import</span> javax.swing.Timer;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InnerClassTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        TalkingClock clock = <span class="hljs-keyword">new</span> TalkingClock(<span class="hljs-number">1000</span>, <span class="hljs-keyword">true</span>);<br>        clock.start();<br><br>        <span class="hljs-comment">// keep program running until user selects &quot;OK&quot;</span><br>        JOptionPane.showMessageDialog(<span class="hljs-keyword">null</span>, <span class="hljs-string">&quot;Quit program?&quot;</span>);<br>        System.exit(<span class="hljs-number">0</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * A clock that prints the time in regular intervals</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TalkingClock</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> interval;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> beep;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">TalkingClock</span><span class="hljs-params">(<span class="hljs-keyword">int</span> interval, <span class="hljs-keyword">boolean</span> beep)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">this</span>.interval = interval;<br>        <span class="hljs-keyword">this</span>.beep = beep;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * Starts the clock.</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">start</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        ActionListener listener = <span class="hljs-keyword">new</span> TimePrinter();<br>        Timer t = <span class="hljs-keyword">new</span> Timer(interval, listener);<br>        t.start();<br>    &#125;<br><br>    <span class="hljs-comment">// 内部类 TimePrinter</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TimePrinter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ActionListener</span></span><br><span class="hljs-class">    </span>&#123;<br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">actionPerformed</span><span class="hljs-params">(ActionEvent event)</span></span><br><span class="hljs-function">        </span>&#123;<br>            System.out.println(<span class="hljs-string">&quot;At the tone, the time is &quot;</span> + <span class="hljs-keyword">new</span> Date());<br>            <span class="hljs-comment">// 这里的 beep 引用的是外围的 beep</span><br>            <span class="hljs-keyword">if</span> (beep) Toolkit.getDefaultToolkit().beep();<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>局部内部类，就是在方法内的内部类，只有方法内可以使用，其他方法不可以使用，也是可以访问所在类的属性</p>
+<p>优点就是可以访问方法内部的局部变量</p>
+<p>匿名内部类，如果内部类只使用了一次，即只有一次实例化，那么可以使用匿名内部类，语法为：</p>
+<p>new SuperType(construction prarmeters)</p>
+<p>{</p>
+<p>​    innter class methods and data</p>
+<p>}</p>
+<p>中文版 :</p>
+<p>new 父类或者接口名(父类构造器参数)</p>
+<p>{</p>
+<p>​    内部类的方法或者属性</p>
+<p>}</p>
+<p>可以对比一下正常的实例化与匿名内部类的实例化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 正常实例化</span><br>Person queen = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&quot;Mary&quot;</span>);<br><span class="hljs-comment">// 匿名内部类</span><br>Person count = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&quot;Dracula&quot;</span>) &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">printname</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-keyword">this</span>.name);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>AnonymousInnerClassTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.anonymousInnerClass;<br><br><span class="hljs-keyword">import</span> java.awt.*;<br><span class="hljs-keyword">import</span> java.awt.event.*;<br><span class="hljs-keyword">import</span> java.util.*;<br><span class="hljs-keyword">import</span> javax.swing.*;<br><span class="hljs-keyword">import</span> javax.swing.Timer;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AnonymousInnerClassTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        TalkingClock clock = <span class="hljs-keyword">new</span> TalkingClock();<br>        clock.start(<span class="hljs-number">1000</span>, <span class="hljs-keyword">true</span>);<br><br>        <span class="hljs-comment">// keep program running until user selects &quot;OK&quot;</span><br>        JOptionPane.showMessageDialog(<span class="hljs-keyword">null</span>, <span class="hljs-string">&quot;Quit program?&quot;</span>);<br>        System.exit(<span class="hljs-number">0</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * A clock that prints the time in regular intervals.</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TalkingClock</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">start</span><span class="hljs-params">(<span class="hljs-keyword">int</span> interval, <span class="hljs-keyword">boolean</span> beep)</span></span><br><span class="hljs-function">    </span>&#123;<br>    	<span class="hljs-comment">// 匿名内部类</span><br>    	<span class="hljs-comment">// 这里是实现了ActionListener 接口</span><br>        ActionListener listener = <span class="hljs-keyword">new</span> ActionListener() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">actionPerformed</span><span class="hljs-params">(ActionEvent event)</span> </span>&#123;<br>                System.out.println(<span class="hljs-string">&quot;At the tone, the time is &quot;</span> + <span class="hljs-keyword">new</span> Date());<br>                <span class="hljs-keyword">if</span> (beep) Toolkit.getDefaultToolkit().beep();<br>            &#125;<br>        &#125;;<br>        Timer t = <span class="hljs-keyword">new</span> Timer(interval, listener);<br>        t.start();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>如果内部类没有引用任何外部的变量，那么可以定义为静态内部类，然后被外部使用</p>
+<blockquote>
+<p>StaticInnerClassTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.staticInnerClass;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StaticInnerClassTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">double</span>[] d = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>[<span class="hljs-number">20</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; d.length; i++)<br>            d[i] = <span class="hljs-number">100</span> * Math.random();<br>        ArrayAlg.Pair p = ArrayAlg.minmax(d);<br>        System.out.println(<span class="hljs-string">&quot;min = &quot;</span> + p.getFirst());<br>        System.out.println(<span class="hljs-string">&quot;max = &quot;</span> + p.getSecond());<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ArrayAlg</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * A pair of floating-point numbers</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pair</span></span><br><span class="hljs-class">    </span>&#123;<br>        <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> first;<br>        <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> second;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Pair</span><span class="hljs-params">(<span class="hljs-keyword">double</span> f, <span class="hljs-keyword">double</span> s)</span></span><br><span class="hljs-function">        </span>&#123;<br>            first = f;<br>            second = s;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getFirst</span><span class="hljs-params">()</span></span><br><span class="hljs-function">        </span>&#123;<br>            <span class="hljs-keyword">return</span> first;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSecond</span><span class="hljs-params">()</span></span><br><span class="hljs-function">        </span>&#123;<br>            <span class="hljs-keyword">return</span> second;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 静态内部类，用static修饰</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Pair <span class="hljs-title">minmax</span><span class="hljs-params">(<span class="hljs-keyword">double</span>[] values)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">double</span> min = Double.POSITIVE_INFINITY;<br>        <span class="hljs-keyword">double</span> max = Double.NEGATIVE_INFINITY;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">double</span> v : values)<br>        &#123;<br>            <span class="hljs-keyword">if</span> (min &gt; v) min = v;<br>            <span class="hljs-keyword">if</span> (max &lt; v) max = v;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Pair(min, max);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<p>本章最后一部分，代理</p>
+<p>这是一个设计模式，即通过一个代理类来进行调用，不是直接调用，就像平常的代理概念一样，比如如果想看404的网站，那么就可以使用代理。</p>
+<p>代理可以实现一些目标：</p>
+<ol>
+<li>路由对远程服务器的方法调用</li>
+<li>在程序运行期间，将用户接口事件与动作关联起来</li>
+<li>为调试，跟踪方法调用</li>
+</ol>
+<p>比较难理解，这部分就看一看示例，多看看书，不理解就以后再看</p>
+<blockquote>
+<p>ProxyTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cc.singll.learnjava.proxy;<br><br><span class="hljs-keyword">import</span> java.lang.reflect.*;<br><span class="hljs-keyword">import</span> java.util.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProxyTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        Object[] elements = <span class="hljs-keyword">new</span> Object[<span class="hljs-number">1000</span>];<br><br>        <span class="hljs-comment">// fill elements with proxies for the integers 1 ... 100</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; elements.length; i++)<br>        &#123;<br>            Integer value = i + <span class="hljs-number">1</span>;<br>            <span class="hljs-comment">// 初始话代理类</span><br>            InvocationHandler handler = <span class="hljs-keyword">new</span> TraceHandler(value);<br>            <span class="hljs-comment">// 这里是真正的代理 将hook的方法与代理对象绑定，比如这里是Compareable的class，然后代理类就是TreaceHandler</span><br>            Object proxy = Proxy.newProxyInstance(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">new</span> Class[] &#123;Comparable.class&#125;, handler);<br>            <span class="hljs-comment">// 这里赋值时为了从代理调用，而不是直接调用，可以说最基本的改变就是这里</span><br>            elements[i] = proxy;<br>        &#125;<br><br>        <span class="hljs-comment">// construct a random integer</span><br>        Integer key = <span class="hljs-keyword">new</span> Random().nextInt(elements.length) + <span class="hljs-number">1</span>;<br><br>        <span class="hljs-comment">// search for the key</span><br>        <span class="hljs-keyword">int</span> result = Arrays.binarySearch(elements, key);<br><br>        <span class="hljs-comment">// print match if found</span><br>        <span class="hljs-keyword">if</span> (result &gt;= <span class="hljs-number">0</span>) System.out.println(elements[result]);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 用于跟踪方法调用的代理对象</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TraceHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InvocationHandler</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">private</span> Object target;<br><br>    <span class="hljs-comment">// 初始化 target</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">TraceHandler</span><span class="hljs-params">(Object t)</span></span><br><span class="hljs-function">    </span>&#123;<br>        target = t;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">invoke</span><span class="hljs-params">(Object proxy, Method m, Object[] args)</span> <span class="hljs-keyword">throws</span> Throwable</span><br><span class="hljs-function">    </span>&#123;<br>    	<span class="hljs-comment">// 这里是跟踪打印的部分</span><br>    	<span class="hljs-comment">// 其实就是在直接调用中间插入一个步骤，然后你就可以在调用之前进行一些操作，类似劫持、钓鱼</span><br>        <span class="hljs-comment">// print implicit argument</span><br>        System.out.print(target);<br>        <span class="hljs-comment">// print method name</span><br>        System.out.print(<span class="hljs-string">&quot;.&quot;</span> + m.getName() + <span class="hljs-string">&quot;(&quot;</span>);<br>        <span class="hljs-comment">// print explicit arguments</span><br>        <span class="hljs-keyword">if</span> (args != <span class="hljs-keyword">null</span>)<br>        &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; args.length; i++)<br>            &#123;<br>                System.out.print(args[i]);<br>                <span class="hljs-keyword">if</span> (i &lt; args.length - <span class="hljs-number">1</span>) System.out.print(<span class="hljs-string">&quot;,&quot;</span>);<br>            &#125;<br>        &#125;<br><br>        System.out.println(<span class="hljs-string">&quot;)&quot;</span>);<br><br>        <span class="hljs-comment">// 这里是真正调用的部分</span><br>        <span class="hljs-comment">// invoke actual method</span><br>        <span class="hljs-keyword">return</span> m.invoke(target, args);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a>0x03</h1><p>相当懒的我终于回来更新了，也终于继续学Java了</p>
+<p>本文前半段的更新时间是 2019-09-03 20:32:14</p>
+<p>后半段就如文章首部的时间</p>
+<p>真的是相当无语，不过继续学就是了</p>
+<p>插播一条，明年的新年目标要立在blog上</p>
+<p>打脸见~~</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Java/">Java</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/04/21/Java-Training-Week-6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">[Java Training]Week 6</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/08/17/Java-Training-Week-4/">
+                        <span class="hidden-mobile">[Java Training]Week 4</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

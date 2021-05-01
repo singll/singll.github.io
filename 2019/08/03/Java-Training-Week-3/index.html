@@ -1,0 +1,529 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar/avatar.jpg">
+  <link rel="icon" href="/img/avatar/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="剑阁峥嵘而崔嵬 一夫当关 万夫莫开">
+  <meta name="author" content="幻月singll">
+  <meta name="keywords" content="幻月,singll">
+  
+  <title>[Java Training]Week 3 - 剑阁</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.singll.cc","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>剑阁</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="[Java Training]Week 3">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-08-03 15:33" pubdate>
+        2019年8月3日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      47
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">[Java Training]Week 3</h1>
+            
+            <div class="markdown-body">
+              <h1 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h1><pre><code>本系列-Java集训系列
+记录我带领小组进行Java学习，按照《Java核心技术》第十版进行学习
+</code></pre>
+<h1 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h1><pre><code>开始面向对象
+</code></pre>
+<h1 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h1><p>首先声明，对象怎么理解什么的就不再赘述了，这个书里讲的很详细，我这里主要记录一下基本定义和语法怎么写</p>
+<ol>
+<li>类：所有Java代码都属于某个类，有标准的Java库里的类，也有第三方库里的类，还有自定义的类</li>
+<li>封装：通过控制类里各个元素的访问权限，来达到封装的目的</li>
+<li>对象：类的实例，对象与类的关系类似于变量与类型，可以通过对象来调用类里定义的方法和访问类里的属性（这里说类不是很贴切，确切的说是此对象的属性和方法，因为实例化对象之后，正常对于此对象的操作不会影响到类里，也不会影响到其他对象，不过方法和属性是在类里定义的，也是在类里实现的）</li>
+<li>类与类之间有三种关系：<ul>
+<li>依赖：A类里的方法使用了B类里的方法，就说A依赖B，而B不依赖A</li>
+<li>聚合：A类包含B类，就是聚合</li>
+<li>继承：B类在A类的基础上进行扩展或重写，就是继承<br>以下为调用Java标准类库的一个示例代码</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>CalendarTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> CalendarTest;<br><br><span class="hljs-comment">//导入类库，虽然是Java标准类库，但是除了几个基本的，其他都需要导入，不然无法使用</span><br><span class="hljs-keyword">import</span> java.time.*;<br><br><span class="hljs-comment">//定义类   public 是公开的，谁都可以使用这个类  class 关键词，定义类的时候必须要写的   CalendarTest 是类名，一个Java文件里必须有一个与文件名一致的类，并且一定要用public修饰，如果同一个文件里有多个类，那么其他的类都不可以带任何修饰符，形如 class test&#123;&#125;    类名后面跟着的是由一对大括号组成的块，块里所有的代码都属于这个类</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CalendarTest</span> </span>&#123;<br><br>    <span class="hljs-comment">// public 是与类修饰符一样的意义 static是静态方法的修饰符，这里定义是因为main方法必须由static修饰  void 这里是返回值类型，由于main方法没有返回值，所以由void代替，如果是其他方法，有返回值，此处是返回值的类型，可以是基础类型，也可以是对象类型   main 就是方法名，这里的main是固定的，其他方法可以自由命名，命名规则同变量   括号里的就是参数，多个参数用逗号（,）分隔，参数的形式就是：数据类型 变量名。</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// 这里是调用的LocalDate类的new()方法，这个是静态方法的调用方式，然后赋值给一个LocalDate对象</span><br>        LocalDate date = LocalDate.now();<br>        <br>        <span class="hljs-comment">// 使用date（LocalDate对象）来进行调用方法</span><br>        <span class="hljs-keyword">int</span> month = date.getMonthValue();<br>        <span class="hljs-keyword">int</span> today = date.getDayOfMonth();<br><br>        <span class="hljs-comment">// 以下可以自己运行一下，看一看输出</span><br>        date = date.minusDays(today - <span class="hljs-number">1</span>); <span class="hljs-comment">// Set to start of month</span><br>        DayOfWeek weekday = date.getDayOfWeek();<br>        <span class="hljs-keyword">int</span> value = weekday.getValue();  <span class="hljs-comment">// 1 = Monday, ... 7 - Sunday</span><br><br>        System.out.println(<span class="hljs-string">&quot;Mon Tue Wed Thu Fri Sat Sun&quot;</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; value; i++) &#123;<br>            System.out.print(<span class="hljs-string">&quot;    &quot;</span>);<br>        &#125;<br>        <span class="hljs-keyword">while</span> (date.getMonthValue() == month)<br>        &#123;<br>            System.out.printf(<span class="hljs-string">&quot;%3d&quot;</span>, date.getDayOfMonth());<br>            <span class="hljs-keyword">if</span> (date.getDayOfMonth() == today)&#123;<br>                System.out.print(<span class="hljs-string">&quot;*&quot;</span>);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                System.out.print(<span class="hljs-string">&quot; &quot;</span>);<br>            &#125;<br>            date = date.plusDays(<span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">if</span> (date.getDayOfWeek().getValue() == <span class="hljs-number">1</span>) System.out.println();<br>        &#125;<br>        <span class="hljs-keyword">if</span> (date.getDayOfWeek().getValue() != <span class="hljs-number">1</span>) System.out.println();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>以下是自定义类的示例：</p>
+<blockquote>
+<p>EmployeeTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> EmployeeTest;<br><span class="hljs-comment">// 上面的是包名，Java使用包来分隔不同的类，以达到方便定位，方便命名的作用</span><br><br><span class="hljs-keyword">import</span> java.time.*;<br><br><span class="hljs-comment">// 定义类，注意此类与文件名一致，并且大小写相同</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EmployeeTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// 创建Employee的数组，有三个元素，Employee在下面定义的</span><br>        <span class="hljs-comment">// fill the staff array with three EmployeeTest.Employee objects</span><br>        Employee[] staff = <span class="hljs-keyword">new</span> Employee[<span class="hljs-number">3</span>];<br><br>        <span class="hljs-comment">// j实例化对象，使用new 关键字，new classname()，括号里的是参数，实例化的时候会调用构造方法</span><br>        staff[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Carl Cracker&quot;</span>, <span class="hljs-number">75000</span>, <span class="hljs-number">1987</span>, <span class="hljs-number">12</span>, <span class="hljs-number">15</span>);<br>        staff[<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Harry Hacker&quot;</span>, <span class="hljs-number">50000</span>, <span class="hljs-number">1989</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span>);<br>        staff[<span class="hljs-number">2</span>] = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Tony Tester&quot;</span>, <span class="hljs-number">40000</span>, <span class="hljs-number">1990</span>, <span class="hljs-number">3</span>, <span class="hljs-number">15</span>);<br><br>        <span class="hljs-comment">// rise everyone&#x27;s salary by 5%</span><br>        <span class="hljs-keyword">for</span> (Employee e : staff)<br>        &#123;<br>            <span class="hljs-comment">// 使用对象调用方法</span><br>            e.raiseSalary(<span class="hljs-number">5</span>);<br>        &#125;<br><br>        <span class="hljs-comment">// print out information about all EmployeeTest.Employee objects</span><br>        <span class="hljs-keyword">for</span> (Employee e : staff)<br>        &#123;<br>            System.out.println(<span class="hljs-string">&quot;name=&quot;</span> + e.getName() + <span class="hljs-string">&quot;, salary=&quot;</span> + e.getSalary() + <span class="hljs-string">&quot;, hireDay=&quot;</span> + e.getHireDay());<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 注意，这里由于是一个文件里的第二个类，所以一定不要使用修饰符，此类的可见范围是包内可见</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-comment">// 定义属性 private是私有的，可见范围是类内，也就是说只有Employee类可以使用这个name  ， String是类型，同样，可以使用对象来作为类型    可以在后面直接赋初始值</span><br>    <span class="hljs-keyword">private</span> String name = <span class="hljs-string">&quot;test&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary;<br>    <span class="hljs-keyword">private</span> LocalDate hireDay;<br><br>    <span class="hljs-comment">// 构造方法 方法名与类名相同，可以有多个构造方法，但是参数不同，构造方法没有返回值，可以看到这个类里没有main方法，这是因为只需要一个入口方法。 这里定义了五个参数，并且在方法体里将获取到的参数赋值给属性</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String n, <span class="hljs-keyword">double</span> s, <span class="hljs-keyword">int</span> year, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> day)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// 将传进来的参数值赋值给属性name</span><br>        name = n;<br>        salary = s;<br>        hireDay = LocalDate.of(year, month, day);<br>    &#125;<br><br>    <span class="hljs-comment">// 由于属性是private ，所以这里有一个public的方法来暴露给外界，以供获取name的值</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> salary;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> LocalDate <span class="hljs-title">getHireDay</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> hireDay;<br>    &#125;<br><br>    <span class="hljs-comment">// 普通方法，如果没有返回值就用void，如果有返回值就在void的位置填返回值类型</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">raiseSalary</span><span class="hljs-params">(<span class="hljs-keyword">double</span> byPercent)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">double</span> raise = salary * byPercent / <span class="hljs-number">100</span>;<br>        salary += raise;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>声明一下访问控制符（类内的，不包括类）：</p>
+<ol>
+<li>public     公开，全局可访问，并且可以继承的（即任何一个类都可以访问这个属性/方法）</li>
+<li>protected  继承，类内可访问，并且可以继承下去</li>
+<li>private    私有，只有类内可以访问</li>
+<li>无         即修饰符位置为空，表示包内可访问<br>构造方法（构造器）：</li>
+<li>构造方法与类名相同</li>
+<li>每个类可以有一个以上的构造方法（但是不可以有参数个数和类型完全相同的两个构造方法）</li>
+<li>构造方法可以有任意多个参数</li>
+<li>构造方法没有返回值</li>
+<li>构造方法总是伴随着new操作一起调用<br>final 关键词修饰属性的时候，使属性拥有不可改变的特性</li>
+</ol>
+<blockquote>
+<p>StaticTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> StaticTest;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StaticTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// fill the staff array with three EmployeeTest.StaticTest.Employee objects</span><br>        Employee[] staff = <span class="hljs-keyword">new</span> Employee[<span class="hljs-number">3</span>];<br><br>        staff[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Tom&quot;</span>, <span class="hljs-number">40000</span>);<br>        staff[<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Dick&quot;</span>, <span class="hljs-number">60000</span>);<br>        staff[<span class="hljs-number">2</span>] = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Harry&quot;</span>, <span class="hljs-number">65000</span>);<br><br>        <span class="hljs-comment">// print out information about all Employee objects</span><br>        <span class="hljs-keyword">for</span> (Employee e : staff)<br>        &#123;<br>            e.setId();<br>            System.out.println(<span class="hljs-string">&quot;name = &quot;</span> + e.getName() + <span class="hljs-string">&quot;, id = &quot;</span> + e.getId() + <span class="hljs-string">&quot;, salary = &quot;</span> + e.getSalary());<br>        &#125;<br><br>        <span class="hljs-keyword">int</span> n = Employee.getNextId();  <span class="hljs-comment">// calls static method</span><br>        System.out.println(<span class="hljs-string">&quot;Next available id=&quot;</span> + n);<br><br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-comment">// 静态属性，这个属性属于类，正常的属性是每个对象都有自己的一份不同属性，当对象更改自己的属性的值的时候不会影响到其他对象，但是静态属性是所有对象共用一个，当某个对象调用方法或直接更改静态属性的时候，所有的对象访问这个属性就会发现都发生改变了</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> nextId = <span class="hljs-number">1</span>;<br><br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String n , <span class="hljs-keyword">double</span> s)</span></span><br><span class="hljs-function">    </span>&#123;<br>        name = n;<br>        salary = s;<br>        id = <span class="hljs-number">0</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> salary;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> id;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setId</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        id = nextId;  <span class="hljs-comment">// set id to next available id</span><br>        nextId++;<br>    &#125;<br><br>    <span class="hljs-comment">// 静态方法，也是属于类，调用方式是 类名.静态方法名（参数）   比如 Employee.getNextId()  ，而且不可以用对象调用</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getNextId</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> nextId;  <span class="hljs-comment">// returns static field</span><br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span>     <span class="hljs-comment">// unit test</span></span><br><span class="hljs-function">    </span>&#123;<br>        Employee e = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Harry&quot;</span>, <span class="hljs-number">50000</span>);<br>        System.out.println(e.getName() + <span class="hljs-string">&quot; &quot;</span> + e.getSalary());<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>ParamTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> ParamTest;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParamTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">         * Test 1: Methods can&#x27;t modify nemeric parameters</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-comment">// 参数的按值传递</span><br>        <span class="hljs-comment">// 即调用方法的时候是将值传过去的，在方法内部做的更改都不会反映到原变量</span><br>        <span class="hljs-comment">// 用以下例子解释，调用 tripleValue的时候 是将 10 传过去了，而不是将变量percent传过去的，所以在tripleValue里的更改是在 数值 10 的基础上改，而不是改的percent变量</span><br>        System.out.println(<span class="hljs-string">&quot;Testing tripleValue:&quot;</span>);<br>        <span class="hljs-keyword">double</span> percent = <span class="hljs-number">10</span>;<br>        System.out.println(<span class="hljs-string">&quot;Before: percent = &quot;</span> + percent);<br>        tripleValue(percent);<br>        System.out.println(<span class="hljs-string">&quot;After: percent = &quot;</span> + percent);<br><br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">         * Test2: Methods can change the state of object parameters</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-comment">// 这里看到输出的是改完之后的值，因为传的是对象，但是还是按值传递</span><br>        <span class="hljs-comment">// 这里传过去的是harry变量的值，在上面的例子是 数值10  ，但是这里由于是对象，不是基础类型，所以传过去的是一个“值”，这个值是对象的ID</span><br>        <span class="hljs-comment">// 所以可以很简单的理解，由于传进去的ID没有改，而是通过ID调用对象里的方法，由于方法里的ID和变量的ID是同一个值，所以用的是同一个对象的方法，这个方法改变了属性，所以对象的状态发生改变，在外面获取属性的时候，就是改变之后的属性</span><br>        System.out.println(<span class="hljs-string">&quot;\nTest tripleSalary:&quot;</span>);<br>        Employee harry = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Harry&quot;</span>, <span class="hljs-number">50000</span>);<br>        System.out.println(<span class="hljs-string">&quot;Before: salary = &quot;</span> + harry.getSalary());<br>        tripleSalary(harry);<br>        System.out.println(<span class="hljs-string">&quot;After: salary = &quot;</span> + harry.getSalary());<br><br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">         * Test 3: Methods can&#x27;t attach new objects to object parameters</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-comment">// 这里是为了证明传递的对象不是按引用传递</span><br>        <span class="hljs-comment">// 由于传进去的是一个值的复制，对于值的更改，不会反应到原变量</span><br>        <span class="hljs-comment">// 注意的点就是，虽然这里是对象，但是对象与基础类型的不一样的地方仅仅是，相同的对象的“值”可以操作同一个对象</span><br>        System.out.println(<span class="hljs-string">&quot;\nTesting swap:&quot;</span>);<br>        Employee a = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Alice&quot;</span>, <span class="hljs-number">70000</span>);<br>        Employee b = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-number">60000</span>);<br>        System.out.println(<span class="hljs-string">&quot;Before: a = &quot;</span> + a.getName());<br>        System.out.println(<span class="hljs-string">&quot;Before: b = &quot;</span> + b.getName());<br>        swap(a, b);<br>        System.out.println(<span class="hljs-string">&quot;After: a = &quot;</span> + a.getName());<br>        System.out.println(<span class="hljs-string">&quot;After: b = &quot;</span> + b.getName());<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">tripleValue</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x)</span>  <span class="hljs-comment">//doesn&#x27;t work</span></span><br><span class="hljs-function">    </span>&#123;<br>        x = <span class="hljs-number">3</span> * x;<br>        System.out.println(<span class="hljs-string">&quot;End of method: x = &quot;</span> + x);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">tripleSalary</span><span class="hljs-params">(Employee x)</span> <span class="hljs-comment">// works</span></span><br><span class="hljs-function">    </span>&#123;<br>        x.raiseSalary(<span class="hljs-number">200</span>);<br>        System.out.println(<span class="hljs-string">&quot;End of method: salary = &quot;</span> + x.getSalary());<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(Employee x, Employee y)</span></span><br><span class="hljs-function">    </span>&#123;<br>        Employee temp = x;<br>        x = y;<br>        y = temp;<br>        System.out.println(<span class="hljs-string">&quot;End of method: x = &quot;</span> + x.getName());<br>        System.out.println(<span class="hljs-string">&quot;End of method: y = &quot;</span> + y.getName());<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span>  // <span class="hljs-title">simplified</span> <span class="hljs-title">Employee</span> <span class="hljs-title">class</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String n, <span class="hljs-keyword">double</span> s)</span></span><br><span class="hljs-function">    </span>&#123;<br>        name = n;<br>        salary = s;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> salary;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">raiseSalary</span><span class="hljs-params">(<span class="hljs-keyword">double</span> byPercent)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">double</span> raise = salary * byPercent / <span class="hljs-number">100</span>;<br>        salary += raise;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>关于重载的代码示例</p>
+<blockquote>
+<p>ConstructorTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> ConstructorTest;<br><br><span class="hljs-keyword">import</span> java.util.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConstructorTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// fill the staff array with three Employee objects</span><br>        Employee[] staff = <span class="hljs-keyword">new</span> Employee[<span class="hljs-number">3</span>];<br><br>        staff[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Harry&quot;</span>, <span class="hljs-number">40000</span>);<br>        staff[<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> Employee(<span class="hljs-number">60000</span>);<br>        staff[<span class="hljs-number">2</span>] = <span class="hljs-keyword">new</span> Employee();<br><br>        <span class="hljs-comment">// print out information about all Employee objects</span><br>        <span class="hljs-keyword">for</span> (Employee e : staff)<br>        &#123;<br>            System.out.println(<span class="hljs-string">&quot;name = &quot;</span> + e.getName() + <span class="hljs-string">&quot;, id = &quot;</span> + e.getId() + <span class="hljs-string">&quot;, salary = &quot;</span> + e.getSalary());<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> nextId;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;<br>    <span class="hljs-keyword">private</span> String name = <span class="hljs-string">&quot;&quot;</span>;  <span class="hljs-comment">// instance field initialization</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary;<br><br>    <span class="hljs-comment">// static initialization block</span><br>    <span class="hljs-comment">// 静态属性的初始化区域，想要给静态属性初始化就用这样的块 statid&#123; TODO; &#125;</span><br>    <span class="hljs-keyword">static</span><br>    &#123;<br>        Random generator = <span class="hljs-keyword">new</span> Random();<br>        <span class="hljs-comment">// set nextId to a random number between 0 and 9999</span><br>        nextId = generator.nextInt(<span class="hljs-number">10000</span>);<br>    &#125;<br><br>    <span class="hljs-comment">// object initialization block</span><br>    <span class="hljs-comment">// 也可以在这里初始化非静态的属性，这个代码块的优点就是可以写代码，进行一些运算，然后赋值</span><br>    &#123;<br>        id = nextId;<br>        nextId++;<br>    &#125;<br><br>    <span class="hljs-comment">// three overloaded constructors</span><br>    <span class="hljs-comment">// 有多个构造方法就叫重载</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String n, <span class="hljs-keyword">double</span> s)</span></span><br><span class="hljs-function">    </span>&#123;<br>        name = n;<br>        salary = s;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(<span class="hljs-keyword">double</span> s)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// calls the Employee(String , double) constructor</span><br>        <span class="hljs-comment">// 使用this（）来调用其他的构造方法</span><br>        <span class="hljs-keyword">this</span>(<span class="hljs-string">&quot;Employee #&quot;</span>+ nextId, s);<br>    &#125;<br><br>    <span class="hljs-comment">// the default constructor</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// name initialized to &quot;&quot; --see above</span><br>        <span class="hljs-comment">// salary not explicitly set--initialized to 0</span><br>        <span class="hljs-comment">// id initialized in initialization block</span><br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> salary;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> id;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>关于包和导入的代码示例</p>
+<blockquote>
+<p>PackageTest.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> PackageTest;<br><br><span class="hljs-comment">// 导入包，一般在使用其他文件里的类的时候是需要导入类</span><br><span class="hljs-keyword">import</span> PackageTest.cc.singll.learnjava.Employee;<br><br><span class="hljs-comment">// 也可以导入类所在的包，这样就可以使用这个包里的所有类，比如这里的System，用*表示包下的所有类， static 的意思是导入静态的方法和静态的属性，这样就可以不用加类名了，直接当作在本类里的方法一样调用</span><br><span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.lang.System.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PackageTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// because of the import statement, we don&#x27;t have to use</span><br>        <span class="hljs-comment">// PackageTest.cc.singll.learnjava.Employee here</span><br>        Employee harry = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Harry Hacker&quot;</span>, <span class="hljs-number">50000</span>, <span class="hljs-number">1989</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span>);<br><br>        harry.raiseSalary(<span class="hljs-number">5</span>);<br><br>        <span class="hljs-comment">// because of the static import statement, we don&#x27;t hava to use System.out here</span><br>        out.print(<span class="hljs-string">&quot;name = &quot;</span> + harry.getName() + <span class="hljs-string">&quot;, salary = &quot;</span> + harry.getSalary());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Employee.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> PackageTest.cc.singll.learnjava;<br><span class="hljs-comment">// 包名，这里的包要和物理路径对应上，比如 此文件的物理路径就是 PackageTest/cc/singll/learnjava/Employee.java</span><br><br><span class="hljs-keyword">import</span> java.time.*;<br><br><span class="hljs-comment">// 这里将类分开了，其他的类里想用Employee的类，直接导入类，就可以使用了</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary;<br>    <span class="hljs-keyword">private</span> LocalDate hireDay;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String name, <span class="hljs-keyword">double</span> salary, <span class="hljs-keyword">int</span> year, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> day)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.salary = salary;<br>        hireDay = LocalDate.of(year, month, day);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> salary;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> LocalDate <span class="hljs-title">getHireDay</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> hireDay;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">raiseSalary</span><span class="hljs-params">(<span class="hljs-keyword">double</span> byPercent)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">double</span> raise = salary * byPercent / <span class="hljs-number">100</span>;<br>        salary += raise;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h1 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a>0x03</h1><pre><code>拖了一周，不过总算是补回来了，这里的光看文章会看不懂，要结合书来看，这里只是大致讲一下，毕竟还是书里讲的最好
+</code></pre>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Java/">Java</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/08/17/Java-Training-Week-4/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">[Java Training]Week 4</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/07/13/Java-Training-Week-2/">
+                        <span class="hidden-mobile">[Java Training]Week 2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

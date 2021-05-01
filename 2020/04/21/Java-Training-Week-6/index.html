@@ -1,0 +1,835 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar/avatar.jpg">
+  <link rel="icon" href="/img/avatar/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="剑阁峥嵘而崔嵬 一夫当关 万夫莫开">
+  <meta name="author" content="幻月singll">
+  <meta name="keywords" content="幻月,singll">
+  
+  <title>[Java Training]Week 6 - 剑阁</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.singll.cc","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>剑阁</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="[Java Training]Week 6">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-21 21:21" pubdate>
+        2020年4月21日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      55
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">[Java Training]Week 6</h1>
+            
+            <div class="markdown-body">
+              <h1 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h1><p>​    本系列-Java集训系列</p>
+<p>​    变成了自己学习一遍Java- -。</p>
+<h1 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h1><p>​    第七章 异常、断言和日志</p>
+<h1 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h1><h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><ol>
+<li><p>程序总会产生错误，如果是在开发阶段，那么还可以看到错误去修复，然后重新启动，但是在程序的运行阶段，就不可以这样，所以当错误产生的时候，至少做到以下几点：</p>
+<ul>
+<li>向用户通告错误</li>
+<li>保存所有的工作结果</li>
+<li>允许用户以妥善的形式退出程序</li>
+</ul>
+</li>
+<li><p>将程序可能产生的错误做一个归类</p>
+<ul>
+<li>用户输入错误：用户不可能总是按照软件开发者的预期进行输入，会经常产生各种奇怪的输入，程序如果没有进行检查，那么就会产生错误</li>
+<li>设备错误：硬件可能在你发出指令之后不会正常执行，比如没有接上打印机，比如打印机没纸了</li>
+<li>物理限制：磁盘满了</li>
+<li>代码错误：代码无法正确执行，比如调用了错误的方法，方法返回的是null，然后对null进行了方法调用等</li>
+</ul>
+</li>
+<li><p>不论是系统还是语言，都会有一个异常处理机制，以便程序返回一种安全状态，并能够让用户执行一些其他的命令；或者允许用户保存所有操作的结果，并以妥善的方式终止程序</p>
+</li>
+<li><p>异常分类</p>
+<ul>
+<li>分类如下图</li>
+</ul>
+<p><img src="https://i.loli.net/2020/04/26/6UnZCvREc7SPJAk.png" srcset="/img/loading.gif" lazyload alt="Java异常层次结构"></p>
+<ul>
+<li><p>所有的异常都是由Throwable继承而来，下一层分解为Error和Exception</p>
+</li>
+<li><p>Error类层次结构描述了Java运行时系统的内部错误和资源耗尽错误</p>
+</li>
+<li><p>Exception类下属两个分支，RuntimeException是由程序错误导致的异常；IOException是程序本身没有问题，但由于像I/O错误等这类问题导致的异常属于其他异常</p>
+</li>
+<li><p>重点关注的是Exception，而Error应该尽量避免，也无法处理Error的错误</p>
+</li>
+<li><p>Exception中，派生于RuntimeException的异常包括以下几种情况：</p>
+<ol>
+<li>错误的类型转换</li>
+<li>数组访问越界</li>
+<li>访问null指针</li>
+</ol>
+</li>
+<li><p>不是派生于RuntimeException的异常包括：</p>
+<ol>
+<li>试图在文件尾部后面读取数据</li>
+<li>试图打开一个不存在的文件</li>
+<li>试图根据给定的字符串查找Class对象，而这个字符串表示的类并不存在</li>
+</ol>
+</li>
+<li><p>派生于Error类或RuntimeException类的所有异常成为<b>非受查异常</b>，IOException在内的所有其他异常成为<b>受查异常</b>，其中受查异常是需要处理的，即抛出、捕获等</p>
+<p>想必看完上面已经看懵了，这里我用我自己粗浅的理解解释一下，简单说呢，非受查异常（Error和RuntimeException）是外界原因或者代码原因，Error不可控，没办法检查；RuntimeException是可控，最好的办法就是通过代码限制来规避，不需要检查。所以剩下的就是受查异常（IOException）</p>
+</li>
+</ul>
+</li>
+<li><p>声明受查异常。</p>
+<ul>
+<li><p>方法应该在其首部生命所有可能抛出的异常。下面是一个例子</p>
+<blockquote>
+<p>public FileInputStream(String name) throws FileNotFoundException</p>
+</blockquote>
+</li>
+<li><p>自己编写方法时，不必将所有可能抛出的异常都进行声明。以下四种情况需要抛出异常：</p>
+<ol>
+<li><p>调用一个抛出受查异常的方法，例如，FileInputStream构造器。</p>
+</li>
+<li><p>程序运行过程中发现错误，并且利用throw语句抛出一个受查异常。</p>
+</li>
+<li><p>程序出现错误，例如，a[-1]=0会抛出一个ArrayIndexOutOfBoundsException这样的非受查异常。</p>
+</li>
+<li><p>Java虚拟机和运行时库出现的内部错误。</p>
+<p>如果出现前两种情况，则必须告诉调用这个方法的程序员有可能抛出异常。</p>
+</li>
+</ol>
+</li>
+<li><p>对于那些可能被他人使用的Java方法，应该根据异常规范，在方法的首部声明这个方法可能抛出的异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAnimation</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-comment">//....</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Image <span class="hljs-title">loadIeg</span><span class="hljs-params">(String s)</span> <span class="hljs-keyword">throws</span> IOException</span><br><span class="hljs-function">    </span>&#123;<br>     <span class="hljs-comment">//....   </span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果抛出多个异常，那么就用逗号分隔</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAnimation</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-comment">//....</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Image <span class="hljs-title">loadImage</span><span class="hljs-params">(String s)</span> <span class="hljs-keyword">throws</span> FileNotFoundException,EOFException</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">//....</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>声明的应该都是受查异常，非受查异常不应该声明。所以，也不应该声明从RuntimeException类派生的异常，而是应该在代码上阻止产生RuntimeException异常。</p>
+</li>
+</ul>
+</li>
+<li><p>也可以在逻辑有错误的时候主动抛出异常，抛出方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> EOFException();<br></code></pre></td></tr></table></figure>
+
+<p>例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function">String <span class="hljs-title">readData</span><span class="hljs-params">(Scanner in)</span> <span class="hljs-keyword">throws</span> EOFException</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span>(True)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (!in.hasNext()) <span class="hljs-comment">// EOF encountered</span><br>        &#123;<br>            <span class="hljs-keyword">if</span> (n &lt; len)<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> EOFException();<br>        &#125;<br>    &#125;<br>    retrn s;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>根据上一点，发现抛出已存在的异常很轻松：</p>
+<ul>
+<li>找到一个合适的异常类</li>
+<li>创建这个类的一个对象</li>
+<li>将对象抛出</li>
+</ul>
+</li>
+<li><p>创建自己的异常类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileFormatException</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">IOException</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FileFormatException</span><span class="hljs-params">()</span> </span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FileFormatException</span><span class="hljs-params">(String gripe)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">super</span>(gride);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>很多时候需要抛出一些自定义异常，来准确的描述发生的情况</p>
+<p>首先是一定要继承一个Exception类，然后要有默认构造方法和一个带详细描述参数的构造方法，其他方法视情况添加</p>
+<p>抛出自定义异常的方法并没有区别</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function">String <span class="hljs-title">readData</span><span class="hljs-params">(BufferedReader in)</span> thros FileFormatException</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (ch == -<span class="hljs-number">1</span>) <span class="hljs-comment">// EOF encountered</span><br>        &#123;<br>            <span class="hljs-keyword">if</span> (n &lt; len)<br>            &#123;<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> FileFormatException();<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>抛出异常只是把异常的处理交给调用者，并没有真正的处理。如果不进行捕获（处理），程序就会终止运行。捕获异常之后，就可以在代码块中处理异常。</p>
+<p>捕获异常的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">   <span class="hljs-keyword">try</span><br>   &#123;<br>       <span class="hljs-comment">// code</span><br>       <span class="hljs-comment">// 需要捕获的异常的代码</span><br>   &#125;<br>   <span class="hljs-keyword">catch</span>(ExceptionType e) <span class="hljs-comment">//</span><br>   &#123;<br>       <span class="hljs-comment">// code</span><br>       <span class="hljs-comment">// 如何处理捕获到的异常</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>会抛出异常的代码在 try 代码块中，当try中的代码触发异常，并且抛出的异常的类型在 catch 中有，则直接进入 catch 中对应的代码块进行执行。</p>
+<p>如果没有触发异常，则跳过 catch 中的代码。</p>
+<p>示例代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">read</span><span class="hljs-params">(String filename)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">try</span><br>    &#123;<br>        InputStream in = <span class="hljs-keyword">new</span> FileInputStream(filename);<br>        <span class="hljs-keyword">int</span> b;<br>        <span class="hljs-keyword">while</span> ((b = in.read()) ! = -<span class="hljs-number">1</span>)<br>        &#123;<br>            <span class="hljs-comment">// process input</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">catch</span> (IOException exception)<br>    &#123;<br>        exception.printStackTrace();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>可以在一个try中捕获多种异常，catch的方式类似于ifelse</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">try</span><br>&#123;<br>    <span class="hljs-comment">// 受查异常的代码</span><br>&#125;<br><span class="hljs-keyword">catch</span> (FileNotFoundException e)<br>&#123;<br>    <span class="hljs-comment">// 处理代码</span><br>&#125;<br><span class="hljs-keyword">catch</span> (UnknownHostException e)<br>&#123;<br>    <span class="hljs-comment">// 处理代码</span><br>&#125;<br><span class="hljs-keyword">catch</span> (IOException e)<br>&#123;<br>    <span class="hljs-comment">// 处理代码</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>获取异常的信息</p>
+<blockquote>
+<p>e.getMessage()</p>
+</blockquote>
+<p>或者更详细的</p>
+<blockquote>
+<p>e.getClass().getName()</p>
+</blockquote>
+<p>也可以在同一个catch中匹配多个不同的异常类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">try</span><br>&#123;<br>    <span class="hljs-comment">// code</span><br>&#125;<br><span class="hljs-keyword">catch</span> (FileNotFoundException | UnknownHostException e)<br>&#123;<br>    <span class="hljs-comment">// code</span><br>&#125;<br><span class="hljs-keyword">catch</span> (IOException e)<br>&#123;<br>    <span class="hljs-comment">// code</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>在异常中抛出另一种异常，即改变异常类型，可以在catch中重新抛出另一个异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">try</span><br>&#123;<br>    <span class="hljs-comment">// code</span><br>&#125;<br><span class="hljs-keyword">catch</span> (SQLException e)<br>&#123;<br>    Throwable se = <span class="hljs-keyword">new</span> ServletException(<span class="hljs-string">&quot;database error&quot;</span>);<br>    se.initCause(e);<br>    <span class="hljs-keyword">throw</span> se;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样既不丢失原始信息，还可以随意定义异常，想看原始信息通过以下方法</p>
+<blockquote>
+<p>Throwable e = se.getCause();</p>
+</blockquote>
+</li>
+<li><p>保证不论是否触发异常都会执行的代码块，finally，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java">InputStream in = <span class="hljs-keyword">new</span> FileInputStream();<br><span class="hljs-keyword">try</span><br>&#123;<br>    <span class="hljs-comment">// code</span><br>&#125;<br><span class="hljs-keyword">catch</span> (IOException e)<br>&#123;<br>    <span class="hljs-comment">// code</span><br>&#125;<br><span class="hljs-keyword">finally</span><br>&#123;<br>    in.close();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上面这段代码中，不论怎么样都会执行finally中的 in.close()</p>
+</li>
+<li><p>如果想要只是关闭资源链接，那么可以用带资源的try语句</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">try</span>(Scanner in = <span class="hljs-keyword">new</span> Scanner(<span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">&quot;/usr/share/dict/words&quot;</span>), <span class="hljs-string">&quot;UTF-8&quot;</span>);<br>   PrintWriter out = <span class="hljs-keyword">new</span> PrintWriter(<span class="hljs-string">&quot;out.txt&quot;</span>))<br>&#123;<br>    <span class="hljs-keyword">while</span>(in.hasNext())<br>        out.println(in.next().toUpperCase());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如上代码不论怎么样都会关闭in和out，如果需要关闭资源，那么尽量用这种方式</p>
+</li>
+<li><p>当产生异常的时候，需要分析产生原因，这时候可以使用分析堆栈的方法</p>
+<p>可以调用Throwable类的printStackTrace方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">Throwable t = <span class="hljs-keyword">new</span> Throwable();<br>    StringWriter out = <span class="hljs-keyword">new</span> StringWriter();<br>t.printStackTrace(<span class="hljs-keyword">new</span> PrintWriter(out));<br>    String description = out.toString();<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>还有更灵活的 使用getStackTrace方法，会得到StackTraceElement对象的数组</p>
+<p>​```java<br>    Throwable t = new Throwable();<br>StackTraceElement[] frames = t.getStackTrace();<br>    for (StackTraceElement frame : frames)<br>    // code</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><br>    静态的<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Thread</span>.</span></span>getAllStackTrace方法，可以产生所有线程的堆栈轨迹<br>    <br>    ```java<br>Map&lt;Thread, StackTraceElement<span class="hljs-literal">[]</span>&gt; map = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Thread</span>.</span></span>get<span class="hljs-constructor">AllStackTraces()</span>;<br>    <span class="hljs-keyword">for</span> (Thread t : map.key<span class="hljs-constructor">Set()</span>)<br>&#123;<br>        StackTraceElement<span class="hljs-literal">[]</span> frames = map.get(t);<br>    <span class="hljs-comment">// code</span><br>    &#125;<br><br></code></pre></td></tr></table></figure>
+
+<ol start="14">
+<li><p>使用异常的一些技巧</p>
+<ul>
+<li>异常处理不能代替简单的测试</li>
+<li>不要过分的细化异常</li>
+<li>利用异常层次结构</li>
+<li>不要压制异常</li>
+<li>在检测错误时，苛刻要比放任更好</li>
+</ul>
+</li>
+</ol>
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><ol>
+<li><p>断言的关键字时assert</p>
+</li>
+<li><p>断言是对一个条件进行判断，如果不通过（即为false），则抛出一个AssertionError异常</p>
+</li>
+<li><p>断言有如下两种形式</p>
+<blockquote>
+<p>assert 条件;</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p>assert 条件 : 表达式;</p>
+</blockquote>
+</li>
+<li><p>断言是被用来在开发的时候进行测试的，默认情况下是不启用的，放在代码里也不会对速度产生影响，在运行程序时用 -enableassertions 或 -ea 选项启用断言</p>
+<blockquote>
+<p>java -enableassertions MyApp</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p>java -ea MyApp</p>
+</blockquote>
+<p>也可以在某个类或整个包中使用断言</p>
+<blockquote>
+<p>java -ea:MyClass -ea:com.mycompany.mylib… MyApp</p>
+</blockquote>
+<p>启用断言不需要重新编译程序</p>
+</li>
+<li><p>关于断言需要注意的点</p>
+<ul>
+<li>断言失败是致命的、不可恢复的错误</li>
+<li>断言检查只用于开发和测试阶段</li>
+</ul>
+</li>
+<li><p>断言使用示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 当i小于0的时候，就会报错并且退出程序</span><br><span class="hljs-keyword">assert</span> i &gt;= <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><ol>
+<li><p>日志的意义：初学者会发现调试神器 System.out.println() ，但是每次都要在调试地点插入这句话，然后在调试完成之后再注释掉或者删除，这样是十分不优雅的，日志就是一个十分优雅的解决方案</p>
+<ul>
+<li>可以很容易地取消全部日志记录，或者仅仅取消某个级别的日志，而且打开和关闭这个操作也很容易</li>
+<li>可以很简单的禁止日志记录的输出，因此，将这些日志代码留在程序中的开销很小</li>
+<li>日志记录可以被定向到不同的处理器，用于再控制台中显示，用于存储在文件中等</li>
+<li>日志记录器和处理器都可以对记录进行过滤。过滤器可以根据过滤实现器制定的标准丢弃那些无用的记录项</li>
+<li>日志记录可以采用不同的方式格式化，例如，纯文本或XML</li>
+<li>应用程序可以使用多个日志记录器，它们使用类似包名的这种具有层次结构的名字，例如，com.mycompany.myapp</li>
+<li>在默认情况下，日志系统的配置由配置文件控制。如果需要的话，应用程序可以替换这个配置</li>
+</ul>
+</li>
+<li><p>最简单的日志使用方法</p>
+<p>使用全局日志记录器（global logger）并调用其info方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">Logger.getGlobal().info(<span class="hljs-string">&quot;File-&gt;Open menu item selected&quot;</span>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>在默认情况下，这条记录将会显示以下内容<br><br>&gt; May 10, 2013 10:12:15 PM LoggingImageViewer fileOpen<br>&gt;<br>&gt; INFO: File-&gt;Open menu item selected<br><br>但是，如果在适当的地方（如main开始）调用<br><br>&#96;&#96;&#96;java<br>Logger.getGlobal().setLevel(Level.OFF);<br></code></pre></td></tr></table></figure>
+
+<p>会取消所有的日志</p>
+</li>
+<li><p>高级使用日志方法</p>
+<p>可以自定义日志记录器，而不是所有都用全局日志记录器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger myLogger = Logger.getLogger(<span class="hljs-string">&quot;com.mycompany.myapp&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>与包名类似，日志记录器名字也有层次结构，而且日志记录器还可以继承设置，比如com.mycompany 设置的级别是FINE，那么子包都会默认级别是FINE，如 com.mmycompany.abc</p>
+</li>
+<li><p>通常有以下日志记录器级别：</p>
+<ul>
+<li>SEVERE</li>
+<li>WARNING</li>
+<li>INFO</li>
+<li>CONFIG</li>
+<li>FINE</li>
+<li>FINER</li>
+<li>FINEST</li>
+</ul>
+<p>默认情况下只记录前三个级别，也可以手动设置级别：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 在日志记录之前加上这行代码，就成功将日志级别改成FINE</span><br>logger.setLevel(Level.FINE);<br></code></pre></td></tr></table></figure>
+
+<p>这样在日志中就记录FINE以上的级别的日志</p>
+</li>
+<li><p>记录不同级别的日志</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">logger.warning(message);<br>logger.fine(message);<br>logger.log(Level.FINE, message);<br></code></pre></td></tr></table></figure></li>
+<li><p>跟踪调用的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 获得调用类和方法的确切位置的方法</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">logp</span><span class="hljs-params">(Level l, String className, String methodName, String message)</span></span><br><span class="hljs-function"><span class="hljs-comment">//跟踪执行流的方法</span></span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">entering</span><span class="hljs-params">(String className, String methodName)</span></span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">entering</span><span class="hljs-params">(String className, String methodName, Object param)</span></span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">entering</span><span class="hljs-params">(String className, String methodName, Object[] params)</span></span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">exiting</span><span class="hljs-params">(String className, String methodName)</span></span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">exiting</span><span class="hljs-params">(String className, String methodName, Object result)</span></span><br></code></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">(String file, String pattern)</span></span><br><span class="hljs-function"></span>&#123;<br>    logger.entering(<span class="hljs-string">&quot;com.mycompany.mylib.Reader&quot;</span>, <span class="hljs-string">&quot;read&quot;</span>, <span class="hljs-keyword">new</span> Object[] &#123;file, pattern&#125;);<br>    <span class="hljs-comment">// code</span><br>    logger.exiting(<span class="hljs-string">&quot;com.mycompany.mylib.Reader&quot;</span>, <span class="hljs-string">&quot;read&quot;</span>, count);<br>    <span class="hljs-keyword">return</span> count;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>在代码中进行配置不容易更改，也不容易复用。更好的解决方案是使用配置文件。</p>
+<p>默认情况下，配置文件存在于 jre/lib/logging.properties</p>
+<p>使用指定日志配置文件启动程序</p>
+<blockquote>
+<p>java -Djava.util.logging.config.file=<configfile> MainClass</p>
+</blockquote>
+<p>也可以在main中调用</p>
+<blockquote>
+<p>System.setProperty(“java.util.logging.config.file”, file)</p>
+</blockquote>
+<p>在配置文件中配置显示级别</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">.<span class="hljs-keyword">level</span>=<span class="hljs-keyword">INFO</span><br></code></pre></td></tr></table></figure>
+
+<p>指定的包的级别</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">com.mycompany.myapp.level</span>=FINE<br></code></pre></td></tr></table></figure>
+
+<p>在控制台上显示日志</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">java<span class="hljs-selector-class">.util</span><span class="hljs-selector-class">.logging</span><span class="hljs-selector-class">.ConsoleHandler</span>.level=FINE<br></code></pre></td></tr></table></figure></li>
+<li><p>日志本地化，即根据不同地区显示不同的语言，实现原理是单词映射</p>
+<p>首先是资源包，需要为每个地区创建一个资源包，然后放到固定位置，比如</p>
+<blockquote>
+<p>com/mycompany/logmessages_en.properties</p>
+<p>com/mycompany/logmessages_de.properties</p>
+<p>com/mycompany/logmessages_zh.properties</p>
+</blockquote>
+<p>文件里的内容是</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">readingFile</span> = Achtung! Datei wird eingelesen<br><span class="hljs-attr">renamingFile</span> = Datei wird umbenannt<br></code></pre></td></tr></table></figure>
+
+<p>然后记录日志的时候指定资源包</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">Logger logger = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Logger</span>.</span></span>get<span class="hljs-constructor">Logger(<span class="hljs-params">loggerName</span>, <span class="hljs-string">&quot;com.mycompany.logmessages&quot;</span>)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>在记录的日志中使用关键词就可以本地化啊（非关键词不会本地化）：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">logger.<span class="hljs-builtin-name">info</span>(<span class="hljs-string">&quot;readingFile&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>在配置文件中使用占位符</p>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs puppet">Reading <span class="hljs-keyword">file</span> &#123;<span class="hljs-number">0</span>&#125;.<br>Achtung! <span class="hljs-keyword">Datei</span> &#123;<span class="hljs-number">0</span>&#125; <span class="hljs-keyword">wird</span> <span class="hljs-keyword">eingelesen</span><br></code></pre></td></tr></table></figure>
+
+<p>然后使用的时候这样用</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">logger.log(<span class="hljs-keyword">Level</span>.<span class="hljs-keyword">INFO</span>, &quot;readingFile&quot;, fileName);<br>logger.log(<span class="hljs-keyword">Level</span>.<span class="hljs-keyword">INFO</span>, &quot;renamingFile&quot;, <span class="hljs-built_in">new</span> <span class="hljs-keyword">Object</span>[] &#123; oldName, newName&#125;);<br></code></pre></td></tr></table></figure></li>
+<li><p>日志处理器，即日志的处理程序，日志记录器将日志记录下来之后会发送到日志处理器中，一般以xxxHandler命名，如自带的：ConsoleHandler、FileHandler、SocketHandler。分别表示 控制台处理器、文件处理器、Socket处理器。</p>
+<p>日志记录器默认会将记录发送到ConsoleHandler中，而且日志记录器还会将记录发送到父处理器中。</p>
+<p>处理器也有日志记录级别。所以日志的实际记录级别是高于日志记录器和处理器的阀值。处理器的默认记录级别也是INFO</p>
+<blockquote>
+<p>java.util.logging.ConsoleHandler.level=INFO</p>
+</blockquote>
+<p>还可以自定义日志记录器，然后使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">Logger logger = Logger.getLogger(<span class="hljs-string">&quot;com.mycompany.myapp&quot;</span>);<br>logger.setLevel(level.FINE);<br>logger.setUseParentHandlers(<span class="hljs-keyword">false</span>); <span class="hljs-comment">// 设置：不发送到父日志处理器中</span><br>Handler handler = <span class="hljs-keyword">new</span> ConsoleHandler(); <span class="hljs-comment">// 自定义一个处理器</span><br>handler.setLevel(Level.FINE); <span class="hljs-comment">// 设置自定义处理器的级别</span><br>logger.addHandler(handler);  <span class="hljs-comment">// 将自定义的处理器添加到日志中，使用</span><br></code></pre></td></tr></table></figure>
+
+<p>其中，FileHandler是将日志发送到文件中的处理器，默认是发送到用户主目录的javan.log的文件中，以xml方式保存。</p>
+<p>可以通过更改FileHandler的设置，来重点记录想关注的。</p>
+</li>
+<li><p>过滤器，即对日志进行过滤，来对重点内容进行关注。</p>
+<p>通过实现Filter接口，并实现下列方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">isLoggable</span><span class="hljs-params">(LogRecord record)</span></span><br></code></pre></td></tr></table></figure>
+
+<p>实现方法：接收的参数是日志的一行记录，在方法中对记录进行操作，比如进行判断是否包含err，返回Boolean值，如果为true就是记录下来的，返回为false就是过滤掉的。</p>
+<p>将过滤器安装到记录器或者处理器中，调用setFilter即可，同一时刻只能有一个过滤器。</p>
+</li>
+<li><p>格式化器，对日志记录的格式进行设置的处理程序。</p>
+<p>日志处理器的默认格式可能会缺少一些关键信息，可以通过自定义格式化器来覆盖默认的配置。</p>
+<p>扩展Formatter类并覆盖下面这个方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function">String <span class="hljs-title">format</span><span class="hljs-params">(LogRecord record)</span></span><br></code></pre></td></tr></table></figure>
+
+<p>实现方法：接受的参数是日志的一行记录，在方法中对记录进行格式化，然后return格式化之后的日志。</p>
+<p>格式化可能会用到这个方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function">String <span class="hljs-title">formatMessage</span><span class="hljs-params">(LogRecord record)</span></span><br></code></pre></td></tr></table></figure>
+
+<p>加头和加尾：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function">String <span class="hljs-title">getHead</span><span class="hljs-params">(Handler h)</span></span><br><span class="hljs-function">String <span class="hljs-title">getTail</span><span class="hljs-params">(Handler h)</span></span><br></code></pre></td></tr></table></figure>
+
+<p>最后，调用setFormatter方法将格式化器安装到处理器中。</p>
+</li>
+<li><p>日志记录总结：</p>
+<ul>
+<li>程序尽可能的都要使用日志，在使用日志记录器的时候，保持日志记录器命名为主应用程序包名。</li>
+<li>要为日志提供一个配置，推荐使用配置文件。</li>
+<li>日志记录的级别要谨慎使用，如果记录太多可能导致日志中存在大量无用信息。</li>
+</ul>
+</li>
+<li><p>调试技巧：</p>
+<ul>
+<li><p>在可能出问题的附近使用打印变量，查看是否符合预期</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">System.out.println(<span class="hljs-string">&quot;x=&quot;</span> + x);<br></code></pre></td></tr></table></figure></li>
+<li><p>每一个类中都放一个main，即单元测试，通过调用来测试方法的输入和输出是否符合预期</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-comment">// code</span><br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// test code</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>单元测试有单元测试框架，可以省去每个方法创建main手动写代码以及擦除的过程</p>
+</li>
+<li><p>日志代理（logging proxy）是一个子类的对象，可以截获方法调用，并进行日志记录，然后调用超类中的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">Random generator = <span class="hljs-keyword">new</span> Random()&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">nextDouble</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">double</span> result = <span class="hljs-keyword">super</span>.nextDouble();<br>        Logger.getGlobal().info(<span class="hljs-string">&quot;nextDouble: &quot;</span>+ result);<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>Throwable类中的printStackTrace方法，可以获取调用的堆栈</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">try</span>&#123;<br>    <span class="hljs-comment">//</span><br>&#125;<span class="hljs-keyword">catch</span> (Throwable t)&#123;<br>    t.printStackTrace();<br>    <span class="hljs-keyword">throw</span> t;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>也可以不捕获异常直接调用获取堆栈信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">Thread.dumpStack();<br></code></pre></td></tr></table></figure></li>
+<li><p>堆栈轨迹默认显示在System.err上，也可以利用printStackTrace(PrintWriter s)方法将堆栈信息发送到文件中。也可以采用以下方法将堆栈信息放到字符串中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">StringWriter out = <span class="hljs-keyword">new</span> StringWriter();<br><span class="hljs-keyword">new</span> Throwable().printStackTrace(<span class="hljs-keyword">new</span> PrintWriter(out));<br>String description = out.toString();<br></code></pre></td></tr></table></figure></li>
+<li><p>将错误信息保存到文件中的方法</p>
+<blockquote>
+<p>java MyProram 2&gt; errors.txt</p>
+</blockquote>
+<p>同时显示在System.err和System.out中（即同时显示在控制台和保存在文件中）:</p>
+<p>java MyProgram 1&gt; errors.txt 2&gt; &amp;1</p>
+</li>
+<li><p>将异常的堆栈轨迹只记录在文件中，不显示在控制台</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">Thread.setDefaultUncaughtexceptionHandler(<br>	<span class="hljs-keyword">new</span> Thread.UncaughtExceptionHandler()&#123;<br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">uncaughtException</span><span class="hljs-params">(Thread t, Throwable e)</span></span><br><span class="hljs-function">        </span>&#123;<br>            <span class="hljs-comment">// 保存到文件中的信息</span><br>        &#125;<br>    &#125;<br>)<br></code></pre></td></tr></table></figure></li>
+<li><p>在启动程序的时候使用 -verbose，可以观察到类的加载过程</p>
+</li>
+<li><p>-Xlint选项会对代码进行检查。（主要是语法问题）</p>
+<blockquote>
+<p>javac -Xlint:fallthrough</p>
+</blockquote>
+</li>
+<li><p>jconsole的图形工具是对Java应用程序进行监控和管理的，可以看到内存消耗、线程使用、类加载等情况</p>
+<blockquote>
+<p>jconsole processID</p>
+</blockquote>
+</li>
+<li><p>jmap是一个获得堆的转储工具，可以看到堆的信息</p>
+<blockquote>
+<p>jmap -dump:format=b,file=dumpFileName processID</p>
+<p>jhat dumpFileName</p>
+</blockquote>
+<p>然后打开浏览器 localhost:700，就能看到堆的内容</p>
+</li>
+<li><p>-Xprof是一个剖析器，跟踪方法调用次数。</p>
+</li>
+</ul>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Java/">Java</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/10/14/vulnerability-SQL-InjectionEntry-level/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">[vulnerability]SQL Injection·Entry-level</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/12/15/Java-Training-Week-5/">
+                        <span class="hidden-mobile">[Java Training]Week 5</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
